@@ -14,14 +14,26 @@ getpapers can fetch article metadata, fulltexts (PDF or XML), and supplementary 
 
 ## Installation
 
-### Installing nodeJS
+### Using NodeJS
+
+#### Installing NodeJS
 
 Please follow [these cross-platform instructions](https://github.com/blahah/installing-node-tools)
 
-### Installing getpapers
+#### Installing getpapers
 
 ```bash
 $ npm install --global getpapers
+```
+
+### Using Docker
+
+#### Installing Docker
+Please follow [these cross-platform instructions](https://docs.docker.com/get-docker/)
+
+#### Building Docker image
+```bash
+docker build -t getpapers . 
 ```
 
 ## Usage
@@ -48,6 +60,21 @@ Use `getpapers --help` to see the command-line help:
 ```
 
 By default, getpapers uses the EuropePMC API.
+
+### Docker
+```bash
+docker run --rm -it getpapers --help
+```
+
+#### Attaching directories
+Docker containers have their own isolated file system that is not accessible by user directly.
+In order to get fetched files, you need to mount a local directory when you run a container:
+
+```bash
+mkdir tmp
+docker run --rm -it -v "$(pwd)"/tmp:/data getpapers --query 'c4 photosynthesis flaveria' --outdir=/data
+``` 
+More about bind mounts you can find [here](https://docs.docker.com/storage/bind-mounts/).
 
 ## Screenshot
 
