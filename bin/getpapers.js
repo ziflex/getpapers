@@ -36,7 +36,8 @@ program
   .option('-f, --logfile <filename>',
     'save log to specified file in output directory as well as printing to terminal')
   .option('-k, --limit <int>',
-    'limit the number of hits and downloads')
+    'limit the number of hits and downloads',
+    100)
   .option('--filter <filter object>',
     'filter by key value pair, passed straight to the crossref api only')
   .option('-r, --restart',
